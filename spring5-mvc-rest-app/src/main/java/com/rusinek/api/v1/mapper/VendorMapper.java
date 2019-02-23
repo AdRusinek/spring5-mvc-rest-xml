@@ -1,6 +1,5 @@
 package com.rusinek.api.v1.mapper;
 
-import com.rusinek.api.v1.model.CustomerDTO;
 import com.rusinek.api.v1.model.VendorDTO;
 import com.rusinek.domain.Vendor;
 import org.mapstruct.Mapper;

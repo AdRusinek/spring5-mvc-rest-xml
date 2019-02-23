@@ -5,8 +5,6 @@ import com.rusinek.services.CustomerService;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -61,6 +59,7 @@ public class CustomerControllerTest {
         when(customerService.getAllCustomers()).thenReturn(Arrays.asList(customer1, customer2));
 
         mockMvc.perform(get("/api/v1/customers/")
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.customers", hasSize(2)));
@@ -79,6 +78,7 @@ public class CustomerControllerTest {
 
         //when
         mockMvc.perform(get("/api/v1/customers/1")
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstName", equalTo("Michale")));
@@ -100,6 +100,7 @@ public class CustomerControllerTest {
 
         //when/then
         mockMvc.perform(post("/api/v1/customers/")
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer)))
                 .andExpect(status().isCreated())
